@@ -31,8 +31,8 @@ class KinectSegmentationNode(Node):
         )
         self.declare_parameter('confidence', 0.5)
         self.declare_parameter('image_size', 640)
-        self.declare_parameter('inference_fps', 15.0)
-        self.declare_parameter('device', 'cpu')
+        self.declare_parameter('inference_fps', 30.0)
+        self.declare_parameter('device', 'cuda:0')
 
         model_path = self.get_parameter(
             'model_path'

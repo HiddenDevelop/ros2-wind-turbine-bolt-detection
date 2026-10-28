@@ -1,6 +1,7 @@
 import rclpy
 import cv2
 import numpy as np
+import time
 
 from rclpy.node import Node
 from sensor_msgs.msg import Image, CameraInfo
@@ -28,11 +29,16 @@ class YoloDepthLocalization(Node):
         # Replace 'best.pt' with the path to your trained bolt model
         self.model = YOLO('best.pt') 
 
+        #self.timer = self.create_timer(5.0, self.timer_callback)
+
         # Camera Intrinsics
         self.fx = None
         self.fy = None
         self.cx = None
         self.cy = None
+
+
+        self.last_print_time = self.get_clock().now()
 
         self.declare_parameter('rgb_topic', '/k4a/rgb/image_raw')
         self.declare_parameter('depth_topic', '/k4a/depth_to_rgb/image_raw')
@@ -62,6 +68,9 @@ class YoloDepthLocalization(Node):
 
         self.get_logger().info('YOLO 3D Target Tracker started. Waiting for frames...')
 
+    def timer_callback(self):
+        self.get_logger().info()
+
     def camera_info_callback(self, msg):
         # Extract intrinsic parameters once
         if self.fx is None:
@@ -80,10 +89,12 @@ class YoloDepthLocalization(Node):
             depth_image = self.bridge.imgmsg_to_cv2(depth_msg, desired_encoding='passthrough')
             
             # 1. Run YOLO inference on the RGB frame
-            results = self.model.predict(rgb_image, conf=0.6, verbose=False)
+            results = self.model.predict(rgb_image, conf=0.3, verbose=False)
             
+            positions = []
+
             # 2. Iterate through detected bounding boxes
-            for box in results[0].boxes:
+            for index, box in enumerate(results[0].boxes):
                 # Extract integer coordinates of the bounding box window
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 
@@ -119,19 +130,37 @@ class YoloDepthLocalization(Node):
                     spatial_msg.y = point_y
                     spatial_msg.z = point_z
                     self.target_pub.publish(spatial_msg)
+                    positions.append( (point_x, point_y, point_z, index) )
                     
-                    print(f"The 3D coordinates are ({point_x}, {point_y}, {point_z})")
-
-                    # --- Draw UI Visualization ---
+                    #self.get_logger().info(f"For {index}, the 3D coordinates are ({point_x}, {point_y}, {point_z})")
+                                           # --- Draw UI Visualization ---
                     # Draw YOLO Bounding Box
                     cv2.rectangle(rgb_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
                     # Draw Centroid Target
                     cv2.circle(rgb_image, (u, v), 5, (0, 0, 255), -1)
                     
                     # Display the 3D Z depth on screen
-                    depth_display = f"Z: {point_y:.3f}, D: {distance_formula(point_x, point_y, point_z):.3f}m"
+                    depth_display = f"#Hex: {index} D: {distance_formula(point_x, point_y, point_z):.3f}m"
                     cv2.putText(rgb_image, depth_display, (x1, y1 - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                    
+            current_time = self.get_clock().now()
+
+            elapsed = (
+                current_time - self.last_print_time
+            ).nanoseconds / 1e9
+
+            if elapsed >= 2.0:
+                self.get_logger().info(
+                        "-------------------------------------------------------------------------------------"
+                    )
+                for position in positions:
+                    self.get_logger().info(
+                        f"For Hex #{position[3] + 1}, the 3D coordinates are ({position[0]}, {position[1]}, {position[2]})"
+                    )
+
+
+                self.last_print_time = current_time    
 
             cv2.imshow("YOLO 3D Target Localization", rgb_image)
             cv2.waitKey(1)
