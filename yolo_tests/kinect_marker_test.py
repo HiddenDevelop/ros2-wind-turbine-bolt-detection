@@ -7,6 +7,7 @@ from cv_bridge import CvBridge
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import CameraInfo, Image
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 #python3 -c "import cv2; print(dir(cv2.aruco))" For checking available aruco dictionaries in OpenCV on Robot
 
@@ -57,6 +58,13 @@ class KinectArucoPose(Node):
         )
 
         # Subscribers.
+
+        image_qos = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+        
         self.camera_info_sub = self.create_subscription(
             CameraInfo,
             self.camera_info_topic,
@@ -68,7 +76,7 @@ class KinectArucoPose(Node):
             Image,
             self.rgb_topic,
             self.rgb_callback,
-            qos_profile_sensor_data
+            image_qos
         )
 
         self.last_pose_log_time = 0.0
@@ -277,7 +285,6 @@ class KinectArucoPose(Node):
 
         cv.waitKey(1)
 
-
 def main(args=None):
     rclpy.init(args=args)
 
@@ -297,3 +304,4 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
+
