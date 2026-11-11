@@ -156,7 +156,7 @@ class YoloDepthLocalization(Node):
                     )
                 for position in positions:
                     self.get_logger().info(
-                        f"For Hex #{position[3] + 1}, the 3D coordinates are ({position[0]}, {position[1]}, {position[2]})"
+                        f"For Hex #{position[3] + 1}, ({position[0]}, {position[1]}, {position[2]}, {distance_formula(position[0], position[1], position[2])})"
                     )
 
 
