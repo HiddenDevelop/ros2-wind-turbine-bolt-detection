@@ -73,28 +73,23 @@ class YoloDepthLocalization(Node):
             history=HistoryPolicy.KEEP_LAST,
             depth=1
         )
-
-        #self.rgb_sub = Subscriber(self, Image, rgb_topic)
-        self.rgb_sub = self.create_subscription(
+        
+        self.rgb_sub = Subscriber(
+            self,
             Image,
-            self.rgb_topic,
-            self.rgb_callback,
-            image_qos
+            rgb_topic,
+            qos_profile=image_qos
         )
-
-        self.depth_sub = self.create_subscription(
+        
+        self.depth_sub = Subscriber(
+            self,
             Image,
-            self.depth_topic,
-            self.depth_callback,
-            image_qos
+            depth_topic,
+            qos_profile=image_qos
         )
-
-        # Synchronize RGB and depth frames
-        self.sync = ApproximateTimeSynchronizer(
-            [self.rgb_sub, self.depth_sub],
-            queue_size=10,
-            slop=0.1
-        )
+        
+        self.sync = ApproximateTimeSynchronizer([self.rgb_sub, self.depth_sub],queue_size=2,slop=0.1)
+        
         self.sync.registerCallback(self.kinect_callback)
 
         self.camera_info_sub = self.create_subscription(
