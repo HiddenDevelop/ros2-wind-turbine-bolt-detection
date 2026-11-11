@@ -9,6 +9,7 @@ from sensor_msgs.msg import Image, CameraInfo
 from geometry_msgs.msg import Point
 from message_filters import ApproximateTimeSynchronizer, Subscriber
 from cv_bridge import CvBridge
+from rclpy.qos import QoSProfile, ReliabilityPolicy, HistoryPolicy
 
 from ultralytics import YOLO
 
@@ -67,8 +68,26 @@ class YoloDepthLocalization(Node):
         rgb_topic = self.get_parameter('rgb_topic').get_parameter_value().string_value
         depth_topic = self.get_parameter('depth_topic').get_parameter_value().string_value
 
-        self.rgb_sub = Subscriber(self, Image, rgb_topic)
-        self.depth_sub = Subscriber(self, Image, depth_topic)
+        image_qos = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            history=HistoryPolicy.KEEP_LAST,
+            depth=1
+        )
+
+        #self.rgb_sub = Subscriber(self, Image, rgb_topic)
+        self.rgb_sub = self.create_subscription(
+            Image,
+            self.rgb_topic,
+            self.rgb_callback,
+            image_qos
+        )
+
+        self.depth_sub = self.create_subscription(
+            Image,
+            self.depth_topic,
+            self.depth_callback,
+            image_qos
+        )
 
         # Synchronize RGB and depth frames
         self.sync = ApproximateTimeSynchronizer(
@@ -146,14 +165,9 @@ class YoloDepthLocalization(Node):
 
     def pose_estimation(self,frame,detector,matrix_coefficients,distortion_coefficients,MARKER_SIZE_M):
 
-        gray = cv.cvtColor(
-            frame,
-            cv.COLOR_BGR2GRAY
-        )
-
-        corners, ids, rejected_img_points = detector.detectMarkers(
-            gray
-        )
+        gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
+        
+        corners, ids, rejected = self.detector.detectMarkers(gray)
 
         if ids is not None:
 
@@ -295,12 +309,13 @@ class YoloDepthLocalization(Node):
 
         aruco_type = "DICT_5X5_100"
 
-        arucoDict = cv.aruco.getPredefinedDictionary(ARUCO_DICT[aruco_type])
+        self.aruco_dictionary = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_5X5_100)
+        
+        self.aruco_parameters = cv.aruco.DetectorParameters()
 
-        arucoParams = cv.aruco.DetectorParameters()
-        Detector = cv.aruco.ArucoDetector(
-            arucoDict,
-            arucoParams
+        self.detector = cv.aruco.ArucoDetector(
+            self.aruco_dictionary,
+            self.aruco_parameters
         )
 
         try:
@@ -309,7 +324,7 @@ class YoloDepthLocalization(Node):
 
             rgb_image, T_C_A = self.pose_estimation(
                 rgb_image,
-                Detector,
+                self.detector,
                 self.camera_matrix,
                 self.dist_coeffs,
                 MARKER_SIZE_M
