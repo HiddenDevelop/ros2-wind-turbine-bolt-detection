@@ -6,6 +6,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
 import time
+import argparse
 
 class KinectVideoRecorder(Node):
     def __init__(self, duration=10):
@@ -86,13 +87,28 @@ class KinectVideoRecorder(Node):
             self.video_writer = None
 
 
+
 def main(args=None):
-    rclpy.init(args=args)
+    parser = argparse.ArgumentParser(
+        description='Record Kinect RGB video for a specified duration.'
+    )
 
-    # Change this to the desired recording duration
-    recording_duration = 10  # seconds
+    parser.add_argument(
+        'duration',
+        type=float,
+        nargs='?',
+        default=10.0,
+        help='Recording duration in seconds (default: 10)'
+    )
 
-    node = KinectVideoRecorder(duration=recording_duration)
+    parsed_args, ros_args = parser.parse_known_args(args)
+
+    if parsed_args.duration <= 0:
+        parser.error('Duration must be greater than zero.')
+
+    rclpy.init(args=ros_args)
+
+    node = KinectVideoRecorder(duration=parsed_args.duration)
 
     try:
         while rclpy.ok() and not node.recording_finished:
