@@ -24,7 +24,7 @@ class KinectSegmentationNode(Node):
 
         # ROS 2 parameters
         self.declare_parameter(
-            'model_path', '/home/amp_b/models/weights.pt'
+            'model_path', '/home/amp_b/models/best.pt'
         )
         self.declare_parameter(
             'image_topic', '/k4a/rgb/image_raw'
