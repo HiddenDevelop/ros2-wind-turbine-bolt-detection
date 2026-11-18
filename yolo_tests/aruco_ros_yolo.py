@@ -66,40 +66,56 @@ class YoloDepthLocalization(Node):
 
         self.bolt_points_M = (bolt_points_cm * 0.01)
 
-        self.declare_parameter('rgb_topic', '/k4a/rgb/image_raw')
-        self.declare_parameter('depth_topic', '/k4a/depth_to_rgb/image_raw')
+        self.declare_parameter(
+            'rgb_topic',
+            '/k4a/rgb/image_raw'
+        )
         
-        rgb_topic = self.get_parameter('rgb_topic').get_parameter_value().string_value
-        depth_topic = self.get_parameter('depth_topic').get_parameter_value().string_value
-
+        self.declare_parameter(
+            'depth_topic',
+            '/k4a/depth_to_rgb/image_raw'
+        )
+        
+        rgb_topic = self.get_parameter(
+            'rgb_topic'
+        ).get_parameter_value().string_value
+        
+        depth_topic = self.get_parameter(
+            'depth_topic'
+        ).get_parameter_value().string_value
+        
+        
         image_qos = QoSProfile(
             reliability=ReliabilityPolicy.BEST_EFFORT,
             history=HistoryPolicy.KEEP_LAST,
             depth=1
         )
-
-        #self.rgb_sub = Subscriber(self, Image, rgb_topic)
-        self.rgb_sub = self.create_subscription(
+        
+        
+        self.rgb_sub = Subscriber(
+            self,
             Image,
-            self.rgb_topic,
-            self.rgb_callback,
-            image_qos
+            rgb_topic,
+            qos_profile=image_qos
         )
-
-        self.depth_sub = self.create_subscription(
+        
+        self.depth_sub = Subscriber(
+            self,
             Image,
-            self.depth_topic,
-            self.depth_callback,
-            image_qos
+            depth_topic,
+            qos_profile=image_qos
         )
-
-        # Synchronize RGB and depth frames
+        
+        
         self.sync = ApproximateTimeSynchronizer(
             [self.rgb_sub, self.depth_sub],
-            queue_size=10,
+            queue_size=2,
             slop=0.1
         )
-        self.sync.registerCallback(self.kinect_callback)
+        
+        self.sync.registerCallback(
+            self.kinect_callback
+        )
 
         self.camera_info_sub = self.create_subscription(
             CameraInfo,
