@@ -31,7 +31,7 @@ class YoloDepthLocalization(Node):
         self.cy = None
 
         self.last_print_time = 0.0
-        self.print_interval = 1.0   # seconds
+        self.print_interval = 3.0   # seconds
 
         self.T_M_C = None #Transformation from Camera to Mockup frame
         self.T_M_A = np.eye(4, dtype=np.float64)
@@ -357,7 +357,7 @@ class YoloDepthLocalization(Node):
                         
             
             # 1. Run YOLO inference on the RGB frame
-            results = self.model.predict(rgb_image, conf=0.6, verbose=False)
+            results = self.model.predict(rgb_image, conf=0.4, verbose=False)
             
             current_time = time.time()
 
