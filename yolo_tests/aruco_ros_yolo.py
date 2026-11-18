@@ -1,5 +1,6 @@
 from matplotlib.pyplot import gray
 
+import time
 import rclpy
 import cv2 as cv
 import numpy as np
@@ -28,6 +29,9 @@ class YoloDepthLocalization(Node):
         self.fy = None
         self.cx = None
         self.cy = None
+
+        self.last_print_time = 0.0
+        self.print_interval = 1.0   # seconds
 
         self.T_M_C = None #Transformation from Camera to Mockup frame
         self.T_M_A = np.eye(4, dtype=np.float64)
@@ -73,23 +77,28 @@ class YoloDepthLocalization(Node):
             history=HistoryPolicy.KEEP_LAST,
             depth=1
         )
-        
-        self.rgb_sub = Subscriber(
-            self,
+
+        #self.rgb_sub = Subscriber(self, Image, rgb_topic)
+        self.rgb_sub = self.create_subscription(
             Image,
-            rgb_topic,
-            qos_profile=image_qos
+            self.rgb_topic,
+            self.rgb_callback,
+            image_qos
         )
-        
-        self.depth_sub = Subscriber(
-            self,
+
+        self.depth_sub = self.create_subscription(
             Image,
-            depth_topic,
-            qos_profile=image_qos
+            self.depth_topic,
+            self.depth_callback,
+            image_qos
         )
-        
-        self.sync = ApproximateTimeSynchronizer([self.rgb_sub, self.depth_sub],queue_size=2,slop=0.1)
-        
+
+        # Synchronize RGB and depth frames
+        self.sync = ApproximateTimeSynchronizer(
+            [self.rgb_sub, self.depth_sub],
+            queue_size=10,
+            slop=0.1
+        )
         self.sync.registerCallback(self.kinect_callback)
 
         self.camera_info_sub = self.create_subscription(
@@ -176,9 +185,9 @@ class YoloDepthLocalization(Node):
 
             for i, marker_id in enumerate(ids_flat):
 
-                print(
-                    f"Detected ArUco ID: {int(marker_id)}"
-                )
+                # print(
+                #     f"Detected ArUco ID: {int(marker_id)}"
+                # )
 
                 # ---------------------------------------------
                 # Known physical marker geometry
@@ -218,10 +227,10 @@ class YoloDepthLocalization(Node):
                     Y = float(tvec[1, 0])
                     Z = float(tvec[2, 0])
 
-                    print(
-                        f"Marker position in camera frame: "
-                        f"X={X:.3f}, Y={Y:.3f}, Z={Z:.3f} m"
-                    )
+                    # print(
+                    #     f"Marker position in camera frame: "
+                    #     f"X={X:.3f}, Y={Y:.3f}, Z={Z:.3f} m"
+                    # )
                 if not success:
                     continue
                 # Draw marker coordinate frame
@@ -334,8 +343,16 @@ class YoloDepthLocalization(Node):
             # 1. Run YOLO inference on the RGB frame
             results = self.model.predict(rgb_image, conf=0.6, verbose=False)
             
+            current_time = time.time()
+
+            should_print = (
+                current_time - self.last_print_time
+                >= self.print_interval
+            )
+
+
             # 2. Iterate through detected bounding boxes
-            for box in results[0].boxes:
+            for detection_id, box in enumerate(results[0].boxes):
                 # Extract integer coordinates of the bounding box window
                 x1, y1, x2, y2 = map(int, box.xyxy[0])
                 
@@ -381,12 +398,14 @@ class YoloDepthLocalization(Node):
                         Ym = float(point_M[1])
                         Zm = float(point_M[2])
 
-                        print(
-                            f"YOLO point in mockup frame: "
-                            f"X={Xm:.3f}, "
-                            f"Y={Ym:.3f}, "
-                            f"Z={Zm:.3f} m"
-                        )
+                        if should_print:
+                            print(
+                                f"[D{detection_id}] "
+                                f"Marker-frame position: "
+                                f"X={Xm:.3f}, "
+                                f"Y={Ym:.3f}, "
+                                f"Z={Zm:.3f} m"
+                            )
 
                         bolt_index, matched_point, error = (
                             self.associate_bolt(point_M)
@@ -394,35 +413,25 @@ class YoloDepthLocalization(Node):
 
                         if bolt_index is not None:
 
-                            print(
-                                f"Matched Bolt #{bolt_index + 1} | "
-                                f"Map position = "
-                                f"({matched_point[0]:.3f}, "
-                                f"{matched_point[1]:.3f}) m | "
-                                f"error = {error:.3f} m"
-                            )
+                            if should_print:
+                                print(
+                                    f"[D{detection_id}] "
+                                    f"Matched Bolt #{bolt_index + 1} | "
+                                    f"Map Position= "
+                                    f"({matched_point[0]:.3f}, "
+                                    f"{matched_point[1]:.3f}) m | "
+                                    f"XY error = {error:.3f} m"
+                                )
 
                         else:
 
-                            print(
-                                f"No valid bolt association. "
-                                f"Closest error = {error:.3f} m"
-                            )
+                            if should_print:
+                                print(
+                                    f"[D{detection_id}] "
+                                    f"No valid association | "
+                                    f"Closest XY error = {error:.3f} m"
+                                )
 
-                    bolt_index, matched_point, error = (self.associate_bolt(point_M))
-
-                    if bolt_index is not None:
-
-                        print(
-                            f"Matched Bolt #{bolt_index + 1} | "
-                            f"Map position = "
-                            f"({matched_point[0]:.3f}, "
-                            f"{matched_point[1]:.3f}) m | "
-                            f"error = {error:.3f} m"
-                        )
-
-                    else:
-                        print(f"No valid bolt association. "f"Closest error = {error:.3f} m")
                     
                     # Publish the 3D spatial coordinate
                     spatial_msg = Point()
@@ -436,12 +445,23 @@ class YoloDepthLocalization(Node):
                     cv.rectangle(rgb_image, (x1, y1), (x2, y2), (0, 255, 0), 2)
                     # Draw Centroid Target
                     cv.circle(rgb_image, (u, v), 5, (0, 0, 255), -1)
+
+                    cv.putText(
+                        rgb_image,
+                        f"D{detection_id}",
+                        (x1, y1 - 30),
+                        cv.FONT_HERSHEY_SIMPLEX,
+                        0.7,
+                        (0, 255, 255),
+                        2
+                    )
                     
                     # Display the 3D Z depth on screen
                     depth_display = f"Z: {point_z:.3f}m"
                     cv.putText(rgb_image, depth_display, (x1, y1 - 10), 
                                 cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-
+            if should_print:
+                self.last_print_time = current_time
                     
             cv.imshow("YOLO 3D Target Localization", rgb_image)
             cv.waitKey(1)
