@@ -150,7 +150,7 @@ class YoloDepthLocalization(Node):
                 cv.waitKey(1)
                 return
 
-            results = self.model.predict(rgb_image, conf=0.6, verbose=False)
+            results = self.model.predict(rgb_image, conf=0.3, verbose=False)
             now = time.time()
             should_print = (now - self.last_print_time) >= self.print_interval
 
