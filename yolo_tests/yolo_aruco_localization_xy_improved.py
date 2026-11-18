@@ -228,7 +228,7 @@ class YoloDepthLocalization(Node):
                 cv.waitKey(1)
                 return
 
-            results = self.model.predict(raw_rgb, conf=0.6, verbose=False)
+            results = self.model.predict(raw_rgb, conf=0.3, verbose=False)
             now = time.monotonic()
             should_print = (now - self.last_print_time) >= self.print_interval
             R_A_C = T_A_C[:3, :3]
@@ -285,7 +285,7 @@ class YoloDepthLocalization(Node):
                 ]
                 cv.arrowedLine(display, arrow_start, arrow_end,
                                (255, 0, 255), 3, cv.LINE_AA, tipLength=0.25)
-                cv.putText(display, '+Z ArUco',
+                cv.putText(display, '',
                            (arrow_end[0] + 6, arrow_end[1] - 6),
                            cv.FONT_HERSHEY_SIMPLEX, 0.45, (255, 0, 255), 2)
                 cv.putText(display, f'D{detection_id} A: ({Xa:.3f}, {Ya:.3f}, {Za:.3f})m',

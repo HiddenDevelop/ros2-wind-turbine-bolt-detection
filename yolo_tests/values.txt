@@ -1,0 +1,124 @@
+Test1
+[D0] ArUco XYZ=(-0.3999, -0.5175, 0.1893) m; pixel=(916, 474); camera Z=1.2260 m; center_depth_pixels=121; depth_IQR=4.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.4013, -0.5165, 0.1905) m; pixel=(915, 468); camera Z=1.2240 m; center_depth_pixels=121; depth_IQR=6.0 mm; marker_RMSE=0.20 px
+[D0] ArUco XYZ=(-0.4165, -0.4977, 0.2507) m; pixel=(906, 479); camera Z=1.2280 m; center_depth_pixels=121; depth_IQR=4.0 mm; marker_RMSE=0.62 px
+[D0] ArUco XYZ=(-0.4010, -0.5206, 0.1876) m; pixel=(908, 490); camera Z=1.2290 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.4029, -0.5191, 0.1835) m; pixel=(907, 490); camera Z=1.2330 m; center_depth_pixels=121; depth_IQR=6.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.4023, -0.5179, 0.1802) m; pixel=(908, 490); camera Z=1.2370 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.4027, -0.5204, 0.1887) m; pixel=(907, 490); camera Z=1.2290 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.16 px
+Test2
+[D0] ArUco XYZ=(-0.4045, -0.5159, 0.1645) m; pixel=(913, 685); camera Z=1.1040 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.22 px
+[D0] ArUco XYZ=(-0.4031, -0.5153, 0.1614) m; pixel=(908, 657); camera Z=1.0980 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.26 px
+[D0] ArUco XYZ=(-0.4026, -0.5164, 0.1648) m; pixel=(908, 657); camera Z=1.0940 m; center_depth_pixels=121; depth_IQR=7.0 mm; marker_RMSE=0.25 px
+[D0] ArUco XYZ=(-0.4022, -0.5175, 0.1681) m; pixel=(908, 657); camera Z=1.0920 m; center_depth_pixels=121; depth_IQR=4.0 mm; marker_RMSE=0.26 px
+[D0] ArUco XYZ=(-0.4031, -0.5154, 0.1629) m; pixel=(908, 657); camera Z=1.0970 m; center_depth_pixels=121; depth_IQR=5.0 mm; marker_RMSE=0.25 px
+[D0] ArUco XYZ=(-0.4030, -0.5154, 0.1626) m; pixel=(908, 657); camera Z=1.0970 m; center_depth_pixels=121; depth_IQR=5.0 mm; marker_RMSE=0.25 px
+[D0] ArUco XYZ=(-0.4038, -0.5156, 0.1635) m; pixel=(907, 657); camera Z=1.0960 m; center_depth_pixels=121; depth_IQR=4.0 mm; marker_RMSE=0.22 px
+Test3
+[D0] ArUco XYZ=(-0.4029, -0.4441, 0.1315) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4031, -0.4443, 0.1297) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.13 px
+[D0] ArUco XYZ=(-0.4031, -0.4440, 0.1314) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.12 px
+[D0] ArUco XYZ=(-0.4030, -0.4440, 0.1307) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.13 px
+[D0] ArUco XYZ=(-0.4027, -0.4440, 0.1322) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4031, -0.4441, 0.1306) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4027, -0.4442, 0.1315) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4029, -0.4441, 0.1313) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4031, -0.4440, 0.1310) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.11 px
+[D0] ArUco XYZ=(-0.4032, -0.4441, 0.1303) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4028, -0.4443, 0.1297) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.4028, -0.4439, 0.1320) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.13 px
+[D0] ArUco XYZ=(-0.4030, -0.4441, 0.1308) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.12 px
+[D0] ArUco XYZ=(-0.4028, -0.4440, 0.1323) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4023, -0.4441, 0.1329) m; pixel=(828, 843); camera Z=0.8520 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.4029, -0.4440, 0.1310) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4026, -0.4442, 0.1320) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.4025, -0.4441, 0.1322) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.13 px
+[D0] ArUco XYZ=(-0.4024, -0.4439, 0.1334) m; pixel=(828, 843); camera Z=0.8520 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.4027, -0.4442, 0.1311) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4028, -0.4441, 0.1314) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4028, -0.4441, 0.1318) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.13 px
+[D0] ArUco XYZ=(-0.4027, -0.4440, 0.1319) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.12 px
+[D0] ArUco XYZ=(-0.4029, -0.4442, 0.1306) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.4028, -0.4443, 0.1300) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4025, -0.4441, 0.1322) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.12 px
+[D0] ArUco XYZ=(-0.4029, -0.4443, 0.1301) m; pixel=(828, 843); camera Z=0.8550 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4025, -0.4441, 0.1322) m; pixel=(828, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=1.0 mm; marker_RMSE=0.14 px
+[D0] ArUco XYZ=(-0.4033, -0.4440, 0.1324) m; pixel=(827, 843); camera Z=0.8530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.4027, -0.4441, 0.1314) m; pixel=(828, 843); camera Z=0.8540 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.12 px
+Test4
+[D0] ArUco XYZ=(-0.2865, -0.4443, 0.1790) m; pixel=(676, 839); camera Z=1.1150 m; center_depth_pixels=94; depth_IQR=7.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.2821, -0.4437, 0.1839) m; pixel=(676, 839); camera Z=1.1090 m; center_depth_pixels=92; depth_IQR=5.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2769, -0.4434, 0.1886) m; pixel=(677, 839); camera Z=1.1030 m; center_depth_pixels=62; depth_IQR=5.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.2869, -0.4445, 0.1790) m; pixel=(676, 839); camera Z=1.1160 m; center_depth_pixels=77; depth_IQR=5.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2831, -0.4437, 0.1832) m; pixel=(676, 839); camera Z=1.1100 m; center_depth_pixels=103; depth_IQR=7.5 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2818, -0.4437, 0.1842) m; pixel=(676, 839); camera Z=1.1085 m; center_depth_pixels=58; depth_IQR=9.8 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2905, -0.4449, 0.1743) m; pixel=(676, 839); camera Z=1.1210 m; center_depth_pixels=92; depth_IQR=10.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.2858, -0.4443, 0.1797) m; pixel=(676, 839); camera Z=1.1145 m; center_depth_pixels=60; depth_IQR=4.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2863, -0.4444, 0.1789) m; pixel=(676, 839); camera Z=1.1150 m; center_depth_pixels=79; depth_IQR=4.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2825, -0.4438, 0.1832) m; pixel=(676, 839); camera Z=1.1090 m; center_depth_pixels=83; depth_IQR=2.5 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.2836, -0.4440, 0.1820) m; pixel=(676, 839); camera Z=1.1110 m; center_depth_pixels=98; depth_IQR=6.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2892, -0.4447, 0.1757) m; pixel=(676, 839); camera Z=1.1190 m; center_depth_pixels=113; depth_IQR=6.0 mm; marker_RMSE=0.19 px
+[D0] ArUco XYZ=(-0.2907, -0.4449, 0.1736) m; pixel=(676, 839); camera Z=1.1210 m; center_depth_pixels=94; depth_IQR=4.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2852, -0.4443, 0.1799) m; pixel=(676, 839); camera Z=1.1130 m; center_depth_pixels=91; depth_IQR=3.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2866, -0.4443, 0.1787) m; pixel=(676, 839); camera Z=1.1150 m; center_depth_pixels=72; depth_IQR=5.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.2891, -0.4447, 0.1755) m; pixel=(676, 839); camera Z=1.1190 m; center_depth_pixels=67; depth_IQR=2.0 mm; marker_RMSE=0.19 px
+[D0] ArUco XYZ=(-0.2824, -0.4438, 0.1830) m; pixel=(676, 839); camera Z=1.1090 m; center_depth_pixels=74; depth_IQR=5.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2879, -0.4446, 0.1767) m; pixel=(676, 839); camera Z=1.1170 m; center_depth_pixels=81; depth_IQR=2.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2823, -0.4439, 0.1835) m; pixel=(676, 839); camera Z=1.1090 m; center_depth_pixels=86; depth_IQR=3.0 mm; marker_RMSE=0.15 px
+[D0] ArUco XYZ=(-0.2830, -0.4440, 0.1826) m; pixel=(676, 839); camera Z=1.1100 m; center_depth_pixels=65; depth_IQR=4.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2893, -0.4446, 0.1755) m; pixel=(676, 839); camera Z=1.1190 m; center_depth_pixels=58; depth_IQR=7.0 mm; marker_RMSE=0.17 px
+[D0] ArUco XYZ=(-0.2884, -0.4447, 0.1764) m; pixel=(676, 839); camera Z=1.1180 m; center_depth_pixels=76; depth_IQR=6.0 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.2827, -0.4440, 0.1834) m; pixel=(676, 839); camera Z=1.1100 m; center_depth_pixels=92; depth_IQR=7.2 mm; marker_RMSE=0.16 px
+[D0] ArUco XYZ=(-0.2784, -0.4436, 0.1863) m; pixel=(677, 839); camera Z=1.1050 m; center_depth_pixels=53; depth_IQR=7.0 mm; marker_RMSE=0.18 px
+[D0] ArUco XYZ=(-0.2850, -0.4442, 0.1802) m; pixel=(676, 839); camera Z=1.1130 m; center_depth_pixels=61; depth_IQR=13.0 mm; marker_RMSE=0.16 px
+Test5
+[D0] ArUco XYZ=(-0.3250, -0.4469, 0.1660) m; pixel=(797, 844); camera Z=1.0560 m; center_depth_pixels=109; depth_IQR=7.0 mm; marker_RMSE=0.08 px
+[D0] ArUco XYZ=(-0.3245, -0.4457, 0.1668) m; pixel=(797, 843); camera Z=1.0550 m; center_depth_pixels=121; depth_IQR=3.0 mm; marker_RMSE=0.09 px
+[D0] ArUco XYZ=(-0.3271, -0.4470, 0.1630) m; pixel=(797, 844); camera Z=1.0590 m; center_depth_pixels=119; depth_IQR=3.0 mm; marker_RMSE=0.08 px
+[D0] ArUco XYZ=(-0.3245, -0.4469, 0.1668) m; pixel=(797, 844); camera Z=1.0550 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.09 px
+[D0] ArUco XYZ=(-0.3241, -0.4454, 0.1674) m; pixel=(797, 843); camera Z=1.0530 m; center_depth_pixels=117; depth_IQR=7.0 mm; marker_RMSE=0.03 px
+[D0] ArUco XYZ=(-0.3276, -0.4460, 0.1623) m; pixel=(797, 843); camera Z=1.0600 m; center_depth_pixels=115; depth_IQR=4.0 mm; marker_RMSE=0.06 px
+[D0] ArUco XYZ=(-0.3236, -0.4455, 0.1686) m; pixel=(797, 843); camera Z=1.0530 m; center_depth_pixels=121; depth_IQR=2.0 mm; marker_RMSE=0.07 px
+[D0] ArUco XYZ=(-0.3271, -0.4460, 0.1633) m; pixel=(797, 843); camera Z=1.0590 m; center_depth_pixels=121; depth_IQR=9.0 mm; marker_RMSE=0.07 px
+[D0] ArUco XYZ=(-0.3265, -0.4470, 0.1637) m; pixel=(797, 844); camera Z=1.0580 m; center_depth_pixels=121; depth_IQR=6.0 mm; marker_RMSE=0.03 px
+[D0] ArUco XYZ=(-0.3276, -0.4461, 0.1621) m; pixel=(797, 843); camera Z=1.0600 m; center_depth_pixels=105; depth_IQR=4.0 mm; marker_RMSE=0.07 px
+Test6
+[D0] ArUco-frame position: X=-0.246, Y=-0.480, Z=0.150 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.298, Y=-0.444, Z=0.087 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.296, Y=-0.446, Z=0.089 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.299, Y=-0.445, Z=0.088 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.300, Y=-0.445, Z=0.085 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.297, Y=-0.446, Z=0.087 m; normal_A=(0, 0, +1)
+Test7
+[D0] ArUco-frame position: X=-0.466, Y=-0.446, Z=0.127 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.466, Y=-0.446, Z=0.127 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.462, Y=-0.446, Z=0.119 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.466, Y=-0.446, Z=0.127 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.464, Y=-0.452, Z=0.127 m; normal_A=(0, 0, +1)
+Test8
+[D0] ArUco XYZ=(-0.5102, -0.4493, 0.1242) m; pixel=(739, 843); camera Z=0.9210 m; center_depth_pixels=110; depth_IQR=6.7 mm; marker_RMSE=0.33 px
+[D0] ArUco XYZ=(-0.5158, -0.4478, 0.1340) m; pixel=(740, 843); camera Z=0.9110 m; center_depth_pixels=81; depth_IQR=6.0 mm; marker_RMSE=0.27 px
+[D0] ArUco XYZ=(-0.5165, -0.4482, 0.1333) m; pixel=(739, 843); camera Z=0.9100 m; center_depth_pixels=107; depth_IQR=3.0 mm; marker_RMSE=0.32 px
+[D0] ArUco XYZ=(-0.5119, -0.4487, 0.1270) m; pixel=(739, 843); camera Z=0.9180 m; center_depth_pixels=105; depth_IQR=8.0 mm; marker_RMSE=0.34 px
+[D0] ArUco XYZ=(-0.5145, -0.4493, 0.1312) m; pixel=(739, 844); camera Z=0.9150 m; center_depth_pixels=97; depth_IQR=4.0 mm; marker_RMSE=0.37 px
+Test9
+[D0] ArUco-frame position: X=-0.552, Y=-0.450, Z=0.102 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.552, Y=-0.451, Z=0.101 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.552, Y=-0.446, Z=0.101 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.553, Y=-0.450, Z=0.101 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.551, Y=-0.446, Z=0.104 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.446, Z=0.103 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.451, Z=0.101 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.551, Y=-0.446, Z=0.095 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.451, Z=0.100 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.446, Z=0.104 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.446, Z=0.103 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.550, Y=-0.451, Z=0.101 m; normal_A=(0, 0, +1)
+Test10
+[D0] ArUco-frame position: X=-0.561, Y=-0.447, Z=0.059 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.570, Y=-0.447, Z=0.063 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.563, Y=-0.446, Z=0.064 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.568, Y=-0.451, Z=0.071 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.569, Y=-0.448, Z=0.062 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.570, Y=-0.451, Z=0.067 m; normal_A=(0, 0, +1)
+[D0] ArUco-frame position: X=-0.555, Y=-0.446, Z=0.056 m; normal_A=(0, 0, +1)
